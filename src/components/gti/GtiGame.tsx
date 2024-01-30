@@ -5,7 +5,10 @@ interface IGitGameProps {}
 
 const GtiGame: React.FunctionComponent<IGitGameProps> = (props) => {
   return (
-    <div className="w-full h-screen px-40 py-20 flex">
+    <div className="w-full h-screen px-40 py-20 flex relative">
+      <div className="absolute top-48 right-32">
+        <p className="font-semibold text-5xl">2:00</p>
+      </div>
       <div className="w-1/2 h-full flex flex-col items-center justify-center">
         <p className="text-2xl font-semibold">Guess the image</p>
         <div className="w-[80px] h-[80px] mt-8 rounded-full bg-black text-white flex items-center justify-center">
@@ -55,9 +58,13 @@ const GtiGame: React.FunctionComponent<IGitGameProps> = (props) => {
           />
 
           <div className="flex justify-between items-center w-[500px] mt-[150px]">
-            <button className="w-[150px] text-3xl bg-black text-white rounded-md py-5">{"<<"}</button>
+            <button className="w-[150px] text-3xl bg-black text-white rounded-md py-5">
+              {"<<"}
+            </button>
             <p className="text-2xl">1 of 20</p>
-            <button className="w-[150px] text-3xl bg-black text-white rounded-md py-5">{">>"}</button>
+            <button className="w-[150px] text-3xl bg-black text-white rounded-md py-5">
+              {">>"}
+            </button>
           </div>
         </div>
       </div>
