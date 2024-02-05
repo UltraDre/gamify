@@ -1,13 +1,32 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { ReactEventHandler } from "react";
+import React, { useState } from "react";
+
+type FormInput = {
+  identify: string;
+  pass: string;
+};
 
 const Login = () => {
+  const [textVal, setTextVal] = useState("matric number");
+  const [formInput, setFormInput] = useState<FormInput>({
+    identify: "",
+    pass: "",
+  });
+
+  // DECLARES
   const router = useRouter();
+
+  // FUNCTIONS
   const loginFunc = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push("/gotw");
+
+    if (formInput.identify === "admin" && formInput.pass === "1234") {
+      router.push("/admin_panel_setup");
+    } else {
+      router.push("/gotw");
+    }
   };
 
   return (
@@ -29,11 +48,30 @@ const Login = () => {
           <h3 className="font-semibold capitalize text-5xl mb-10">
             Game center
           </h3>
-          <p className="capitalize font-medium text-lg mb-5">matric number</p>
+          <p className="capitalize font-medium text-lg mb-5">
+            {formInput.identify !== "admin" ? "matric number" : "admin login"}
+          </p>
           <input
             type="text"
-            className="border-2 border-black rounded-md w-[400px] py-5 px-6"
+            value={formInput.identify}
+            onChange={(e) =>
+              setFormInput((prev) => ({ ...prev, identify: e.target.value }))
+            }
+            className="border-2 border-black focus:outline-none rounded-md w-[400px] py-5 px-6 mb-5"
           />
+          {formInput.identify === "admin" && (
+            <>
+              <p className="capitalize font-medium text-lg mb-5"> password </p>
+              <input
+                type="password"
+                value={formInput.pass}
+                onChange={(e) =>
+                  setFormInput((prev) => ({ ...prev, pass: e.target.value }))
+                }
+                className="border-2 border-black focus:outline-none rounded-md w-[400px] py-5 px-6"
+              />
+            </>
+          )}
           <button className="bg-black rounded-md mt-5 text-white px-10 py-6 text-xl text-center w-[200px]">
             Login
           </button>
