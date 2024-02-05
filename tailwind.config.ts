@@ -11,7 +11,7 @@ const config: Config = {
       colors: {
         light: "#f4f5fc",
         dark: "#17203f",
-        blue: "#55725a",
+        blue: "#5373fe",
         semiDark: "#2c334f",
       },
     },

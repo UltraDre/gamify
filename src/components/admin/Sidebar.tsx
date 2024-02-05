@@ -27,7 +27,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
     },
     {
       id: 4,
-      name: "setting",
+      name: "settings",
       url: "settings",
     },
   ];
@@ -75,10 +75,10 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
       <div className="space-y-4 mt-10">
         {adminSidebar.map(({ id, name, url, iconType }) => (
           <div
-            className={`flex items-center gap-x-3 px-10  hover:bg-semiDark hover:bg-opacity-25 duration-300 py-5 ${
+            className={`flex items-center gap-x-3 px-10  hover:bg-semiDark hover:bg-opacity-30 duration-300 py-5 ${
               pathname === `/${url}`
-                ? "bg-semiDark bg-opacity-70"
-                : "hover:bg-semiDark hover:bg-opacity-70"
+                ? "bg-semiDark bg-opacity-30"
+                : "hover:bg-semiDark hover:bg-opacity-30"
             }`}
           >
             <p className="text-2xl text-light" key={id}>
