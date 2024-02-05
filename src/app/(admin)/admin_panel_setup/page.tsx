@@ -6,8 +6,7 @@ interface IAdminProps {
 const Admin: React.FunctionComponent<IAdminProps> = (props) => {
   return (
     <div>
-        Okay
-        Admin page
+      
     </div>
   ) ;
 };
