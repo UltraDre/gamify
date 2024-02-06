@@ -4,6 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import * as React from "react";
 import { TiHome } from "react-icons/ti";
+import { PiGameControllerFill } from "react-icons/pi";
+import { TbClockRecord } from "react-icons/tb";
+import { GiSettingsKnobs } from "react-icons/gi";
 
 interface ISidebarProps {}
 
@@ -19,16 +22,19 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
       id: 2,
       name: "game setting",
       url: "game_setting",
+      iconType: <PiGameControllerFill />,
     },
     {
       id: 3,
       name: "records",
       url: "records",
+      iconType: <TbClockRecord />,
     },
     {
       id: 4,
       name: "settings",
       url: "settings",
+      iconType: <GiSettingsKnobs />,
     },
   ];
 
@@ -80,6 +86,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
                 ? "bg-semiDark bg-opacity-30"
                 : "hover:bg-semiDark hover:bg-opacity-30"
             }`}
+            key={id}
           >
             <p className="text-2xl text-light" key={id}>
               {iconType}

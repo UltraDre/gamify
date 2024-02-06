@@ -3,7 +3,7 @@ export const adminRoutes = {
 
   game_setting: "/game_setting",
 
-  game_setup: "/gaming_setup",
+  image_guessing: "/game_setting/image_guessing",
 
   setting: "/settings",
 

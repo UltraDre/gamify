@@ -1,8 +1,15 @@
 "use client";
+import { adminRoutes } from "@/utils/adminRoutes";
+import { useRouter } from "next/navigation";
 import * as React from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
 interface IGameSettingProps {}
+
+type Err = {
+  session: string;
+  time: string;
+};
 
 const GameSetting: React.FunctionComponent<IGameSettingProps> = (props) => {
   const [toggleGotw, setToggleGotw] = React.useState(false);
@@ -11,6 +18,12 @@ const GameSetting: React.FunctionComponent<IGameSettingProps> = (props) => {
   const [levelVal, setLevelVal] = React.useState<string>("hnd 1");
   const [toggleSemester, setToggleSemester] = React.useState(false);
   const [semesterVal, setSemesterVal] = React.useState<string>("first");
+  const [sessionVal, setSessionVal] = React.useState<string>("");
+  const [timeVal, setTimeVal] = React.useState<string>("");
+  const [err, setErr] = React.useState<Err>({ session: "", time: "" });
+
+  // DECLARES 
+  const router = useRouter()
 
   // FUNCTIONS
   const toggleGOTWFunc = () => {
@@ -62,6 +75,21 @@ const GameSetting: React.FunctionComponent<IGameSettingProps> = (props) => {
     }
   };
 
+  const nextFunc = () => {
+    if (sessionVal === "") {
+      setErr((prev) => ({ ...prev, session: "error occured" }));
+    } else if (timeVal === "") {
+      setErr((prev) => ({ ...prev, time: "error occured" }));
+    } else {
+      localStorage.setItem("dgoftw", gotwVal);
+      localStorage.setItem("dsspid", sessionVal);
+      localStorage.setItem("dslpidd", levelVal);
+      localStorage.setItem("dpidtp", timeVal);
+      localStorage.setItem("dspids", semesterVal);
+      router.push(adminRoutes.image_guessing)
+    }
+  };
+
   return (
     <div className="bg-light min-h-screen flex items-center justify-center">
       <div className="p-20 gap-y-10 grid grid-cols-2 gap-x-20 rounded-md bg-white">
@@ -100,13 +128,18 @@ const GameSetting: React.FunctionComponent<IGameSettingProps> = (props) => {
         </div>
 
         {/* Session  */}
-        <div className="space-y-3">
+        <div className="space-y-3 relative">
           <p className="capitalize text-lg">session</p>
           <input
             type="text"
             placeholder="2021/2022"
+            value={sessionVal}
+            onChange={(e) => setSessionVal(e.target.value)}
             className="min-w-[200px] rounded-md bg-light px-5 py-4 focus:outline-none"
           />
+          {sessionVal === "" && err.session === "error occured" && (
+            <p className="absolute text-red-600">Session cannot be empty</p>
+          )}
         </div>
 
         {/* Level  */}
@@ -144,13 +177,18 @@ const GameSetting: React.FunctionComponent<IGameSettingProps> = (props) => {
         </div>
 
         {/* Time  */}
-        <div className="space-y-3">
+        <div className="space-y-3 relative">
           <p className="capitalize text-lg">time</p>
           <input
-            type="text"
+            type="number"
             placeholder="5"
+            value={timeVal}
+            onChange={(e) => setTimeVal(e.target.value)}
             className="min-w-[200px] rounded-md bg-light px-5 py-4 focus:outline-none"
           />
+          {timeVal === "" && err.time === "error occured" && (
+            <p className="absolute text-red-600">Time cannot be empty</p>
+          )}
         </div>
 
         {/* Semester  */}
@@ -189,7 +227,10 @@ const GameSetting: React.FunctionComponent<IGameSettingProps> = (props) => {
 
         {/* Next  */}
         <div className="relative">
-          <button className="absolute bottom-0 bg-dark rounded-md w-[200px] px-5 py-5 text-light text-xl text-center capitalize">
+          <button
+            onClick={nextFunc}
+            className="absolute bottom-0 bg-dark rounded-md w-[200px] px-5 py-5 text-light text-xl text-center capitalize"
+          >
             next
           </button>
         </div>
