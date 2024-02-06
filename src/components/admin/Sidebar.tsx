@@ -42,7 +42,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
   const pathname = usePathname();
 
   return (
-    <div className="bg-dark w-[20%] h-screen absolute right-0 py-12">
+    <div className="bg-dark w-[20%] h-screen fixed right-0 py-12">
       {/* Logo  */}
       <div className="flex gap-x-5 items-center px-10">
         <div className="w-[50px] h-[50px] rounded">
