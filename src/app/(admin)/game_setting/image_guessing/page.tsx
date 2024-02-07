@@ -4,6 +4,9 @@ import { useRouter } from "next/navigation";
 import * as React from "react";
 import { CiCirclePlus } from "react-icons/ci";
 import ListQuestion from "@/components/admin/image_guessing/ListQuestion";
+import { questionsData } from "@/utils/questionData";
+import Image from "next/image";
+import { Qdata } from "@/types/types";
 
 interface IImageGuessSetupProps {}
 
@@ -11,10 +14,86 @@ const ImageGuessSetup: React.FunctionComponent<IImageGuessSetupProps> = (
   props
 ) => {
   const [conditionMeet, setConditionMeet] = React.useState<boolean>(false);
+  // USE STATES
+  const [question, setQuestion] = React.useState<string>("");
+  const [answer, setAnswer] = React.useState<string>("");
+  const [imgFile, setImgFile] = React.useState<File | string>("");
+  const [selectedImage, setSelectedImage] = React.useState("");
+  const [err, setErr] = React.useState({
+    imgErr: "",
+    questionErr: "",
+    answerErr: "",
+  });
+  const [tempData, setTempData] = React.useState<Qdata[]>(questionsData);
 
   // DECLARES
   const router = useRouter();
 
+  // FUNCTIONS
+  const handleDeleteQues = (props: string) => {
+    const filterArr = tempData.filter((items) => items.id !== props);
+    setTempData(filterArr);
+  };
+
+  const handleQuesEdit = (props: Qdata) => {
+    // Find the question in tempData
+    const foundQuestion = tempData.find((item) => item.id === props.id);
+
+    if (foundQuestion) {
+      const updatedTempData = tempData.map((item) =>
+        item.id === props.id
+          ? {
+              ...item,
+              imageUrl: props.imageUrl,
+              question: props.question,
+              answer: props.answer,
+            }
+          : item
+      );
+
+      setTempData(updatedTempData);
+    }
+  };
+  
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setSelectedImage(imageUrl);
+      setImgFile(file);
+    }
+  };
+
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!imgFile) {
+      setErr((prev) => ({ ...prev, imgErr: "error occured" }));
+    } else if (!question) {
+      setErr((prev) => ({ ...prev, questionErr: "error occured" }));
+    } else if (!answer) {
+      setErr((prev) => ({ ...prev, answerErr: "error occured" }));
+    } else {
+      setTempData((prevData) => [
+        ...prevData,
+        {
+          id: `${prevData.length + 1}`,
+          imageUrl: selectedImage,
+          question,
+          answer,
+        },
+      ]);
+
+      setImgFile("");
+      setSelectedImage("");
+      setQuestion("");
+      setAnswer("");
+    }
+  };
+
+  // USE EFFECTS
   React.useEffect(() => {
     const sessionId = localStorage.getItem("dsspid");
     const gotw = localStorage.getItem("dgoftw");
@@ -40,8 +119,19 @@ const ImageGuessSetup: React.FunctionComponent<IImageGuessSetupProps> = (
       {/* Questions  */}
       <p className="text-3xl font-semibold capitalize">questions</p>
       <div className="flex flex-wrap gap-x-10 items-center mt-10">
-        {[0, 1, 2].map((items) => (
-          <ListQuestion key={items} qData={items} />
+        {tempData.length === 0 && (
+          <p className="text-xl text-dark text-center">
+            Questions will appear here
+          </p>
+        )}
+
+        {tempData.map(({ id, imageUrl, question, answer }) => (
+          <ListQuestion
+            key={id}
+            qData={{ id, imageUrl, question, answer }}
+            handleDelete={handleDeleteQues}
+            handleQuesEdit={handleQuesEdit}
+          />
         ))}
       </div>
 
@@ -51,18 +141,45 @@ const ImageGuessSetup: React.FunctionComponent<IImageGuessSetupProps> = (
           add questions
         </p>
 
-        <form className="flex gap-x-10 justify-center mt-10">
-          <div className="space-y-4">
+        <form
+          onSubmit={handleFormSubmit}
+          className="flex gap-x-10 justify-center mt-10"
+        >
+          <div className="space-y-4 relative">
             <p className="capitalize font-medium text-xl text-left">image</p>
-            <div className="border-2 rounded-md w-52 h-40 flex items-center justify-center">
-              <p className="cursor-pointer text-5xl">
+            <div className="border-2 rounded-md w-52 h-40 flex items-center justify-center overflow-hidden">
+              <label
+                htmlFor="addImage"
+                className={`cursor-pointer text-5xl absolute z-50 ${
+                  imgFile ? "text-light" : "text-dark"
+                }`}
+              >
                 <CiCirclePlus />
-              </p>
+              </label>
+              <input
+                id="addImage"
+                hidden
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+              />
+              {selectedImage && (
+                <Image
+                  src={selectedImage}
+                  alt="mouse"
+                  width={1000}
+                  height={1000}
+                  priority={true}
+                />
+              )}
             </div>
+            {imgFile === "" && err.imgErr === "error occured" && (
+              <p className="absolute text-red-600">Image cannot be empty</p>
+            )}
           </div>
 
           <div className="space-y-3">
-            <div className="space-y-4">
+            <div className="space-y-4 relative">
               <p className="capitalize font-medium text-xl text-left">
                 question
               </p>
@@ -71,28 +188,41 @@ const ImageGuessSetup: React.FunctionComponent<IImageGuessSetupProps> = (
                 id=""
                 cols={30}
                 rows={10}
+                value={question}
+                onChange={(e) => setQuestion(e.target.value)}
                 className="text-lg focus:outline-none border-2 rounded-md w-[500px] resize-none px-6 py-4 h-[200px]"
                 placeholder="Type the question here"
               ></textarea>
+              {question === "" && err.questionErr === "error occured" && (
+                <p className="absolute text-red-600 text-right w-full">
+                  Question cannot be empty
+                </p>
+              )}
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-4 relative">
               <p className="capitalize font-medium text-xl text-left">answer</p>
               <textarea
                 name="text"
                 id=""
                 cols={30}
                 rows={10}
+                value={answer}
+                onChange={(e) => setAnswer(e.target.value)}
                 className="text-lg focus:outline-none border-2 rounded-md w-[500px] resize-none px-6 py-4 h-[200px]"
                 placeholder="Type the question here"
               ></textarea>
+              {answer === "" && err.answerErr === "error occured" && (
+                <p className="absolute w-full text-right text-red-600">
+                  Answer cannot be empty
+                </p>
+              )}
             </div>
           </div>
+          <button className="absolute bottom-10 rounded-md left-1/2 -translate-x-1/2 capitalize text-lg bg-dark text-light w-[180px] py-4">
+            add
+          </button>
         </form>
-
-        <button className="absolute bottom-10 rounded-md left-1/2 -translate-x-1/2 capitalize text-lg bg-dark text-light w-[180px] py-4">
-          add
-        </button>
       </div>
     </div>
   ) : null;

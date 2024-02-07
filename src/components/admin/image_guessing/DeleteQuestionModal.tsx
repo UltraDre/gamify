@@ -2,17 +2,19 @@ import * as React from "react";
 
 interface IDeleteQuestionModalProps {
   hideModal: () => void;
-  qid: number;
+  qid: string;
+  handleDelete: (e: string) => void;
 }
 
 const DeleteQuestionModal: React.FunctionComponent<
   IDeleteQuestionModalProps
-> = ({ hideModal, qid }) => {
+> = ({ hideModal, qid, handleDelete }) => {
+
   return (
     <div className="fixed z-[90] w-[80%] left-0 h-screen top-0 bg-dark bg-opacity-50 flex items-center justify-center">
       <div className="bg-white px-14 rounded-md py-14 gap-y-6 flex items-center flex-col justify-center">
         <p className="text-2xl font-medium">
-          Are you sure you want to delete question {qid + 1}
+          Are you sure you want to delete question {qid}
         </p>
         <div className="flex gap-x-8">
           <button
@@ -21,7 +23,7 @@ const DeleteQuestionModal: React.FunctionComponent<
           >
             no
           </button>
-          <button className=" bg-red-600 text-light text-xl capitalize w-[100px] rounded-md py-4">
+          <button className=" bg-red-600 text-light text-xl capitalize w-[100px] rounded-md py-4" onClick={() => handleDelete(qid)}>
             yes
           </button>
         </div>
