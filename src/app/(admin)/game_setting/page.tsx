@@ -22,8 +22,8 @@ const GameSetting: React.FunctionComponent<IGameSettingProps> = (props) => {
   const [timeVal, setTimeVal] = React.useState<string>("");
   const [err, setErr] = React.useState<Err>({ session: "", time: "" });
 
-  // DECLARES 
-  const router = useRouter()
+  // DECLARES
+  const router = useRouter();
 
   // FUNCTIONS
   const toggleGOTWFunc = () => {
@@ -86,9 +86,17 @@ const GameSetting: React.FunctionComponent<IGameSettingProps> = (props) => {
       localStorage.setItem("dslpidd", levelVal);
       localStorage.setItem("dpidtp", timeVal);
       localStorage.setItem("dspids", semesterVal);
-      router.push(adminRoutes.image_guessing)
+      router.push(adminRoutes.image_guessing);
     }
   };
+
+  React.useEffect(() => {
+    localStorage.removeItem("dgoftw");
+    localStorage.removeItem("dsspid");
+    localStorage.removeItem("dslpidd");
+    localStorage.removeItem("dpidtp");
+    localStorage.removeItem("dspids");
+  }, []);
 
   return (
     <div className="bg-light min-h-screen flex items-center justify-center">
