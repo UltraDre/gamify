@@ -5,8 +5,9 @@ export const adminRoutes = {
 
   image_guessing: "/game_setting/image_guessing",
 
+  quiz_ladder: "/game_setting/quiz_ladder",
+
   setting: "/settings",
 
   records: "/records",
-  
 };

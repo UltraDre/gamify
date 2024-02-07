@@ -77,16 +77,33 @@ const GameSetting: React.FunctionComponent<IGameSettingProps> = (props) => {
 
   const nextFunc = () => {
     if (sessionVal === "") {
-      setErr((prev) => ({ ...prev, session: "error occured" }));
-    } else if (timeVal === "") {
-      setErr((prev) => ({ ...prev, time: "error occured" }));
-    } else {
-      localStorage.setItem("dgoftw", gotwVal);
-      localStorage.setItem("dsspid", sessionVal);
-      localStorage.setItem("dslpidd", levelVal);
-      localStorage.setItem("dpidtp", timeVal);
-      localStorage.setItem("dspids", semesterVal);
+      setErr((prev) => ({ ...prev, session: "error occurred" }));
+      return;
+    }
+
+    if (timeVal === "") {
+      setErr((prev) => ({ ...prev, time: "error occurred" }));
+      return;
+    }
+
+    const storageValues = {
+      dgoftw: gotwVal,
+      dsspid: sessionVal,
+      dslpidd: levelVal,
+      dpidtp: timeVal,
+      dspids: semesterVal,
+    };
+
+    localStorage.setItem("dgoftw", storageValues.dgoftw);
+    localStorage.setItem("dsspid", storageValues.dsspid);
+    localStorage.setItem("dslpidd", storageValues.dslpidd);
+    localStorage.setItem("dpidtp", storageValues.dpidtp);
+    localStorage.setItem("dspids", storageValues.dspids);
+
+    if (gotwVal === "image guessing") {
       router.push(adminRoutes.image_guessing);
+    } else if (gotwVal === "quiz ladder") {
+      router.push(adminRoutes.quiz_ladder);
     }
   };
 

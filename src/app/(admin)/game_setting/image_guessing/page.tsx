@@ -54,7 +54,6 @@ const ImageGuessSetup: React.FunctionComponent<IImageGuessSetupProps> = (
       setTempData(updatedTempData);
     }
   };
-  
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -96,7 +95,7 @@ const ImageGuessSetup: React.FunctionComponent<IImageGuessSetupProps> = (
   // USE EFFECTS
   React.useEffect(() => {
     const sessionId = localStorage.getItem("dsspid");
-    const gotw = localStorage.getItem("dgoftw");
+    const gotw = localStorage.getItem("dgoftw") === "image guessing";
     const semes = localStorage.getItem("dsspid");
     const level = localStorage.getItem("dslpidd");
     const time = localStorage.getItem("dpidtp");
