@@ -1,31 +1,32 @@
 "use client";
-import Image from "next/image";
+import { QlData } from "@/types/types";
 import * as React from "react";
 import { LiaTimesSolid } from "react-icons/lia";
-import EditQuestionModal from "./EditQuestionModal";
 import DeleteQuestionModal from "../DeleteQuestionModal";
-import { Qdata } from "@/types/types";
+import QlEditQuesModal from "./QlEditQuesModal";
 
-interface IListQuestionProps {
-  qData: Qdata;
+interface IListQuestionsProps {
+  qData: QlData;
   handleDelete: (e: string) => void;
-  handleQuesEdit: (e: Qdata) => void;
+  handleQuesEdit: (e: QlData) => void;
 }
 
-const ListQuestion: React.FunctionComponent<IListQuestionProps> = ({
+const ListQuestions: React.FunctionComponent<IListQuestionsProps> = ({
   qData,
   handleDelete,
-  handleQuesEdit
+  handleQuesEdit,
 }) => {
-  const [showEditModal, setShowEditModal] = React.useState<boolean>(false);
+  // USE STATES
   const [showDeleteModal, setShowDeleteModal] = React.useState<boolean>(false);
+  const [showEditModal, setShowEditModal] = React.useState<boolean>(false);
+
+  // FUNCTIONS
+  const toggleDeleteModal = () => {
+    setShowDeleteModal((prev) => !prev);
+  };
 
   const toggleEditModal = () => {
     setShowEditModal((prev) => !prev);
-  };
-
-  const toggleDeleteModal = () => {
-    setShowDeleteModal((prev) => !prev);
   };
 
   return (
@@ -41,13 +42,6 @@ const ListQuestion: React.FunctionComponent<IListQuestionProps> = ({
           onClick={toggleEditModal}
           className="rounded-full w-[80px] h-[80px] overflow-hidden flex items-center justify-center cursor-pointer"
         >
-          <Image
-            src={qData.imageUrl}
-            alt="mouse"
-            width={1000}
-            height={1000}
-            priority={true}
-          />
           <p className="absolute text-white z-50 text-3xl font-medium">
             {qData.id}
           </p>
@@ -62,10 +56,14 @@ const ListQuestion: React.FunctionComponent<IListQuestionProps> = ({
         />
       )}
       {showEditModal && (
-        <EditQuestionModal handleQuesEdit={handleQuesEdit} hideModal={toggleEditModal} qData={qData} />
+        <QlEditQuesModal
+          handleQuesEdit={handleQuesEdit}
+          hideModal={toggleEditModal}
+          qData={qData}
+        />
       )}
     </>
   );
 };
 
-export default ListQuestion;
+export default ListQuestions;

@@ -4,30 +4,6 @@ import * as React from "react";
 
 const QuizLadderGame: React.FunctionComponent = () => {
   const [selectedAnswer, setSelectedAnswer] = React.useState<string>("");
-  const answersArr = [
-    {
-      id: 1,
-      question: "Which of the following is not an HTML tag?",
-      answers: [
-        {
-          id: 1,
-          answer: "a",
-        },
-        {
-          id: 2,
-          answer: "b",
-        },
-        {
-          id: 3,
-          answer: "c",
-        },
-        {
-          id: 4,
-          answer: "d",
-        },
-      ],
-    },
-  ];
 
   return (
     <div className="w-full h-screen px-40 py-20 flex-col flex items-center justify-center relative">

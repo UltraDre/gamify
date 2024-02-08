@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import * as React from "react";
 import { CiCirclePlus } from "react-icons/ci";
 import ListQuestion from "@/components/admin/image_guessing/ListQuestion";
-import { questionsData } from "@/utils/questionData";
+import { imageGuessingData } from "@/utils/questionData";
 import Image from "next/image";
 import { Qdata } from "@/types/types";
 
@@ -24,7 +24,7 @@ const ImageGuessSetup: React.FunctionComponent<IImageGuessSetupProps> = (
     questionErr: "",
     answerErr: "",
   });
-  const [tempData, setTempData] = React.useState<Qdata[]>(questionsData);
+  const [tempData, setTempData] = React.useState<Qdata[]>(imageGuessingData);
 
   // DECLARES
   const router = useRouter();

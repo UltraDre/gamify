@@ -1,4 +1,4 @@
-export const questionsData = [
+export const imageGuessingData = [
   {
     id: "1",
     imageUrl:
@@ -19,5 +19,77 @@ export const questionsData = [
       "https://res.cloudinary.com/dgdoymhtj/image/upload/v1707240985/product_images/Mechanical_Keyboard_Gaming_Mouse_dsldok.jpg",
     question: "to type in alphabets or more",
     answer: "keyboard",
+  },
+];
+
+export const quizLadderData = [
+  {
+    id: "1",
+    question: "What is the purpose of the 'break' statement in a loop?",
+    answers: [
+      {
+        alpha: "a",
+        answer: "To terminate the entire program",
+      },
+      {
+        alpha: "b",
+        answer: "To skip the current iteration and move to the next one",
+      },
+      {
+        alpha: "c",
+        answer: "To pause the execution of the program",
+      },
+      {
+        alpha: "d",
+        answer: "To print a message to the console",
+      },
+    ],
+    correct_answer: "b",
+  },
+  {
+    id: "2",
+    question: "What does CSS stand for in web development?",
+    answers: [
+      {
+        alpha: "a",
+        answer: " Computer Style Sheets",
+      },
+      {
+        alpha: "b",
+        answer: "Creative Style Sheets",
+      },
+      {
+        alpha: "c",
+        answer: "Cascading Style Sheets",
+      },
+      {
+        alpha: "d",
+        answer: "Colorful Style Sheets",
+      },
+    ],
+    correct_answer: "c",
+  },
+  {
+    id: "3",
+    question: "What does the acronym HTML stand for in web development?",
+    answers: [
+      {
+        alpha: "a",
+        answer: "Hyper Transfer Markup Language",
+      },
+      {
+        alpha: "b",
+        answer: "High-Level Text Markup Language",
+      },
+      {
+        alpha: "c",
+        answer: "Hyper Text Makeup Language",
+      },
+      {
+        alpha: "d",
+        answer: "Hyper Text Markup Language",
+      },
+    ],
+    correct_answer: "d",
   },
 ];
