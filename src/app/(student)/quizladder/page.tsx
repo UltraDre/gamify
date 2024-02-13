@@ -21,6 +21,22 @@ const QuizLadder: React.FunctionComponent = () => {
     setEndQuiz(true);
   };
 
+  const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+    const message =
+      "Are you sure you want to leave? Your progress will be lost.";
+
+    event.returnValue = message; // Standard for most browsers
+    return message; // For some older browsers
+  };
+
+  React.useEffect(() => {
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
   const gameRules = [
     "The game consists of 10 questions each with an increasing difficulty.",
     "Contestants must choose the correct answer from the given options.",
@@ -44,7 +60,6 @@ const QuizLadder: React.FunctionComponent = () => {
           quizData={quizLadderData}
           handleEndQuiz={handleEndQuiz}
           handleQuizSubmit={handleQuizSubmit}
-          endQuiz={endQuiz}
         />
       )}
 

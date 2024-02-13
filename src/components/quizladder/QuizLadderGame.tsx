@@ -9,16 +9,13 @@ interface IQuizLadderGameProps {
   quizData: QlData[];
   handleEndQuiz: () => void;
   handleQuizSubmit: (results: { [key: string]: boolean }) => void;
-  endQuiz: boolean;
 }
 
 const QuizLadderGame: React.FunctionComponent<IQuizLadderGameProps> = ({
   quizData,
   handleEndQuiz,
   handleQuizSubmit,
-  endQuiz,
 }) => {
-  const [selectedAnswer, setSelectedAnswer] = React.useState<string>("");
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [userAnswers, setUserAnswers] = React.useState<{
     [key: string]: string;
@@ -27,12 +24,10 @@ const QuizLadderGame: React.FunctionComponent<IQuizLadderGameProps> = ({
 
   const handleNext = () => {
     setCurrentQuestion((prev) => Math.min(prev + 1, quizData.length - 1));
-    setSelectedAnswer("");
   };
 
   const handlePrev = () => {
     setCurrentQuestion((prev) => Math.max(prev - 1, 0));
-    setSelectedAnswer("");
   };
 
   const handleAnswer = (selectedAnswer: string) => {
@@ -40,7 +35,6 @@ const QuizLadderGame: React.FunctionComponent<IQuizLadderGameProps> = ({
       ...prev,
       [quizData[currentQuestion].id]: selectedAnswer,
     }));
-    setSelectedAnswer(selectedAnswer);
   };
 
   const handleSubmit = () => {

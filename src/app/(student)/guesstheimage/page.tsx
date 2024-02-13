@@ -1,18 +1,41 @@
 "use client";
+import QuizResult from "@/components/general/QuizResult";
 import Rules from "@/components/general/Rules";
 import GtiGame from "@/components/gti/GtiGame";
-import React, { useState } from "react";
+import { imageGuessingData } from "@/utils/questionData";
+import * as React from "react";
 
-const Gti = () => {
-  const [start, setStart] = useState(false);
+const Gti: React.FunctionComponent = () => {
+  const [start, setStart] = React.useState<boolean>(false);
+  const [endQuiz, setEndQuiz] = React.useState<boolean>(false);
 
   const startFunc = () => {
     setStart(true);
   };
 
-  const endStartFunc = () => {
-    setStart(false);
+  const handleQuizSubmit = (results: { [key: string]: boolean }) => {
+    console.log(results);
   };
+
+  const handleEndQuiz = () => {
+    setEndQuiz(true);
+  };
+
+  const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+    const message =
+      "Are you sure you want to leave? Your progress will be lost.";
+
+    event.returnValue = message; // Standard for most browsers
+    return message; // For some older browsers
+  };
+
+  React.useEffect(() => {
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
 
   const gameRules = [
     "You have 2 minutes (120 seconds) to make guesses for all 20 images.",
@@ -32,7 +55,16 @@ const Gti = () => {
           game_rules={gameRules}
         />
       )}
-      {start && <GtiGame />}
+
+      {start && !endQuiz && (
+        <GtiGame
+          quizData={imageGuessingData}
+          handleEndQuiz={handleEndQuiz}
+          handleQuizSubmit={handleQuizSubmit}
+        />
+      )}
+
+      {start && endQuiz && <QuizResult />}
     </>
   );
 };
