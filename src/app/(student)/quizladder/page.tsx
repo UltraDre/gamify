@@ -1,17 +1,24 @@
 "use client";
+import QuizResult from "@/components/general/QuizResult";
 import Rules from "@/components/general/Rules";
 import QuizLadderGame from "@/components/quizladder/QuizLadderGame";
+import { quizLadderData } from "@/utils/questionData";
 import * as React from "react";
 
 const QuizLadder: React.FunctionComponent = () => {
-  const [start, setStart] = React.useState(false);
+  const [start, setStart] = React.useState<boolean>(false);
+  const [endQuiz, setEndQuiz] = React.useState<boolean>(false);
 
   const startFunc = () => {
     setStart(true);
   };
 
-  const endStartFunc = () => {
-    setStart(false);
+  const handleQuizSubmit = (results: { [key: string]: boolean }) => {
+    console.log(results);
+  };
+
+  const handleEndQuiz = () => {
+    setEndQuiz(true);
   };
 
   const gameRules = [
@@ -21,7 +28,7 @@ const QuizLadder: React.FunctionComponent = () => {
   ];
 
   return (
-    <>
+    <div>
       {!start && (
         <Rules
           startFunc={startFunc}
@@ -31,8 +38,18 @@ const QuizLadder: React.FunctionComponent = () => {
           game_rules={gameRules}
         />
       )}
-      {start && <QuizLadderGame />}
-    </>
+
+      {start && !endQuiz && (
+        <QuizLadderGame
+          quizData={quizLadderData}
+          handleEndQuiz={handleEndQuiz}
+          handleQuizSubmit={handleQuizSubmit}
+          endQuiz={endQuiz}
+        />
+      )}
+
+      {start && endQuiz && <QuizResult />}
+    </div>
   );
 };
 

@@ -19,13 +19,11 @@ const Gotw = () => {
   };
 
   return (
-    <>
-      <GameOfTheWeek
-        game_link={currentGame.id_name}
-        game_name={currentGame.description}
-        game_img={currentGame.image}
-      />
-    </>
+    <GameOfTheWeek
+      game_link={currentGame.id_name}
+      game_name={currentGame.description}
+      game_img={currentGame.image}
+    />
   );
 };
 

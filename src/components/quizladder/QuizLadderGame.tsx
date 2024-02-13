@@ -1,9 +1,65 @@
 "use client";
 import Image from "next/image";
 import * as React from "react";
+import CountDownTimer from "../general/CountDownTimer";
+import { QlData } from "@/types/types";
+import SubmitModal from "../general/SubmitModal";
 
-const QuizLadderGame: React.FunctionComponent = () => {
+interface IQuizLadderGameProps {
+  quizData: QlData[];
+  handleEndQuiz: () => void;
+  handleQuizSubmit: (results: { [key: string]: boolean }) => void;
+  endQuiz: boolean;
+}
+
+const QuizLadderGame: React.FunctionComponent<IQuizLadderGameProps> = ({
+  quizData,
+  handleEndQuiz,
+  handleQuizSubmit,
+  endQuiz,
+}) => {
   const [selectedAnswer, setSelectedAnswer] = React.useState<string>("");
+  const [currentQuestion, setCurrentQuestion] = React.useState(0);
+  const [userAnswers, setUserAnswers] = React.useState<{
+    [key: string]: string;
+  }>({});
+  const [showSubmitModal, setShowSubmitModal] = React.useState(false);
+
+  const handleNext = () => {
+    setCurrentQuestion((prev) => Math.min(prev + 1, quizData.length - 1));
+    setSelectedAnswer("");
+  };
+
+  const handlePrev = () => {
+    setCurrentQuestion((prev) => Math.max(prev - 1, 0));
+    setSelectedAnswer("");
+  };
+
+  const handleAnswer = (selectedAnswer: string) => {
+    setUserAnswers((prev) => ({
+      ...prev,
+      [quizData[currentQuestion].id]: selectedAnswer,
+    }));
+    setSelectedAnswer(selectedAnswer);
+  };
+
+  const handleSubmit = () => {
+    handleQuizSubmit(getResults());
+    handleEndQuiz();
+  };
+
+  const handleToggleModal = () => {
+    setShowSubmitModal((prev) => !prev);
+  };
+
+  const getResults = () => {
+    const results: { [key: string]: boolean } = {};
+    quizData.forEach((question) => {
+      const userAnswer = userAnswers[question.id];
+      results[question.id] = userAnswer === question.correct_answer;
+    });
+    return results;
+  };
 
   return (
     <div className="w-full h-screen px-40 py-20 flex-col flex items-center justify-center relative">
@@ -26,89 +82,81 @@ const QuizLadderGame: React.FunctionComponent = () => {
       </div>
 
       {/* time  */}
-      <div className="absolute top-44 left-48">
-        <p className="font-semibold text-5xl">Time: 5:00</p>
+      <div className="absolute top-44 left-48 font-semibold text-5xl">
+        <CountDownTimer
+          initialTimeInMinutes={5}
+          handleEndQuiz={handleEndQuiz}
+          getResult={getResults}
+          handleQuizSubmit={handleQuizSubmit}
+        />
       </div>
 
       {/* numbeer  */}
       <div className="w-[80px] h-[80px] rounded-full bg-black text-white flex items-center justify-center">
-        <p className="text-3xl">1</p>
+        <p className="text-3xl">{currentQuestion + 1}</p>
       </div>
 
       {/* Question  and Answers  */}
       <p className="w-[600px] text-center text-3xl font-semibold text-wrap mt-14">
-        What is the purpose of the "break" statement in programming?
+        {quizData[currentQuestion].question}
       </p>
 
       <div className="w-[60%] mt-14 gap-y-12 grid grid-cols-2 gap-x-20">
-        <div
-          className="flex gap-x-6 items-center cursor-pointer"
-          onClick={() => setSelectedAnswer("A")}
-        >
-          <p className="text-3xl font-semibold uppercase">A</p>
+        {quizData[currentQuestion].answers.map(({ alpha, answer }) => (
           <div
-            className={`py-5 px-6  text-2xl ${
-              selectedAnswer === "A" ? "bg-green-200" : "bg-gray-100"
-            }  rounded-lg min-h-[100px] w-full border-black border-4`}
+            className="flex gap-x-6 items-center cursor-pointer"
+            onClick={() => handleAnswer(alpha)}
+            key={alpha}
           >
-            <p className="w-full text-wrap">
-              To terminate the program execution abruptly.
-            </p>
+            <p className="text-3xl font-semibold uppercase">{alpha}</p>
+            <div
+              className={`py-5 px-6  text-2xl ${
+                userAnswers[quizData[currentQuestion].id] === alpha
+                  ? "bg-green-200"
+                  : "bg-gray-100"
+              }  rounded-lg min-h-[100px] w-full border-black border-4`}
+            >
+              <p className="w-full text-wrap">{answer}</p>
+            </div>
           </div>
-        </div>
-        <div
-          className="flex gap-x-6 items-center cursor-pointer"
-          onClick={() => setSelectedAnswer("B")}
-        >
-          <p className="text-3xl font-semibold uppercase">b</p>
-          <div
-            className={`py-5 px-6  text-2xl ${
-              selectedAnswer === "B" ? "bg-green-200" : "bg-gray-100"
-            } bg-gray-100 rounded-lg min-h-[100px] w-full border-black border-4`}
-          >
-            <p className="w-full text-wrap">
-              To exit the current loop or switch statement.
-            </p>
-          </div>
-        </div>
-        <div
-          className="flex gap-x-6 items-center cursor-pointer"
-          onClick={() => setSelectedAnswer("C")}
-        >
-          <p className="text-3xl font-semibold uppercase">c</p>
-          <div
-            className={`py-5 px-6  text-2xl ${
-              selectedAnswer === "C" ? "bg-green-200" : "bg-gray-100"
-            } bg-gray-100 rounded-lg min-h-[100px] w-full border-black border-4`}
-          >
-            <p className="w-full text-wrap">To initiate a function call.</p>
-          </div>
-        </div>
-        <div
-          className="flex gap-x-6 items-center cursor-pointer"
-          onClick={() => setSelectedAnswer("D")}
-        >
-          <p className="text-3xl font-semibold uppercase">d</p>
-          <div
-            className={`py-5 px-6  text-2xl ${
-              selectedAnswer === "D" ? "bg-green-200" : "bg-gray-100"
-            } bg-gray-100 rounded-lg min-h-[100px] w-full border-black border-4`}
-          >
-            <p className="w-full text-wrap">To create a new variable.</p>
-          </div>
-        </div>
+        ))}
       </div>
 
       {/* Buttons  */}
       <div className="flex justify-between items-center w-[500px] mt-[100px]">
-        <button className="w-[150px] text-3xl bg-black text-white rounded-md py-5">
+        <button
+          className="w-[150px] text-3xl bg-black text-white rounded-md py-5"
+          onClick={handlePrev}
+        >
           {"<<"}
         </button>
-        <p className="text-2xl">1 of 10</p>
-        <button className="w-[150px] text-3xl bg-black text-white rounded-md py-5">
-          {">>"}
-        </button>
+        <p className="text-2xl">
+          {currentQuestion + 1} of {quizData.length}
+        </p>
+
+        {currentQuestion === quizData.length - 1 ? (
+          <button
+            className="w-[150px] text-xl bg-green-600 text-white rounded-md py-5"
+            onClick={handleToggleModal}
+          >
+            Submit
+          </button>
+        ) : (
+          <button
+            className="w-[150px] text-3xl bg-black text-white rounded-md py-5"
+            onClick={handleNext}
+          >
+            {">>"}
+          </button>
+        )}
       </div>
+
+      {showSubmitModal && (
+        <SubmitModal
+          toggleModal={handleToggleModal}
+          handleSubmit={handleSubmit}
+        />
+      )}
     </div>
   );
 };
