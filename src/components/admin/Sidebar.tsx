@@ -7,6 +7,8 @@ import { TiHome } from "react-icons/ti";
 import { PiGameControllerFill } from "react-icons/pi";
 import { TbClockRecord } from "react-icons/tb";
 import { GiSettingsKnobs } from "react-icons/gi";
+import { PiStudentThin } from "react-icons/pi";
+import { FaRankingStar } from "react-icons/fa6";
 
 interface ISidebarProps {}
 
@@ -32,6 +34,18 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
     },
     {
       id: 4,
+      name: "students",
+      url: "students",
+      iconType: <PiStudentThin />,
+    },
+    {
+      id: 5,
+      name: "leaderboard",
+      url: "ranking",
+      iconType: <FaRankingStar />,
+    },
+    {
+      id: 6,
       name: "settings",
       url: "settings",
       iconType: <GiSettingsKnobs />,
