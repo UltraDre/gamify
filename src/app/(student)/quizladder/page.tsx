@@ -63,7 +63,7 @@ const QuizLadder: React.FunctionComponent = () => {
         />
       )}
 
-      {start && endQuiz && <QuizResult />}
+      {start && endQuiz && <QuizResult gameName="quiz ladder" />}
     </div>
   );
 };

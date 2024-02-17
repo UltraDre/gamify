@@ -64,7 +64,7 @@ const Gti: React.FunctionComponent = () => {
         />
       )}
 
-      {start && endQuiz && <QuizResult />}
+      {start && endQuiz && <QuizResult gameName="guess the image" />}
     </>
   );
 };
