@@ -41,26 +41,30 @@ const StudentTable: React.FunctionComponent<IStudentTableProps> = (props) => {
         </thead>
 
         <tbody>
-          {studentArr.map(
-            ({ id, name, imageGuessing }) => (
-              <tr
-                className="cursor-pointer"
-                key={id}
-                onClick={() => handleStudent(id)}
-              >
-                <td className="pr-2 py-3">{id}</td>
-                <td className="pr-2 py-3">{name}</td>
-                <td className="pr-2 py-3">{imageGuessing.top3}</td>
-                <td className="pr-2 py-3">{imageGuessing.top10}</td>
-                <td className="pr-2 py-3">{imageGuessing.highestScore}</td>
-                <td className="pr-2 py-3">{imageGuessing.correctScore} pts</td>
-              </tr>
-            )
-          )}
+          {studentArr.map(({ id, name, imageGuessing }) => (
+            <tr
+              className="cursor-pointer"
+              key={id}
+              onClick={() => handleStudent(id)}
+            >
+              <td className="pr-2 py-3">{id}</td>
+              <td className="pr-2 py-3">{name}</td>
+              <td className="pr-2 py-3">{imageGuessing.top3}</td>
+              <td className="pr-2 py-3">{imageGuessing.top10}</td>
+              <td className="pr-2 py-3">{imageGuessing.highestScore}</td>
+              <td className="pr-2 py-3">{imageGuessing.correctScore} pts</td>
+            </tr>
+          ))}
         </tbody>
       </table>
 
-      {openStudentModal && <StudentTableModal studentId={studentId} toggleStudentModal={toggleStudentModal} />}
+      {openStudentModal && (
+        <StudentTableModal
+          margin={true}
+          studentId={studentId}
+          toggleStudentModal={toggleStudentModal}
+        />
+      )}
     </div>
   );
 };

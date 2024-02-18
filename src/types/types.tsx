@@ -25,6 +25,7 @@ export type StudentProp = {
   name: string;
   level: string;
   matric_no: string;
+  imgUrl: string,
   medals: { first: number; second: number; third: number };
   imageGuessing: {
     played: number;

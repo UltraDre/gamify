@@ -2,7 +2,7 @@
 import * as React from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
-import StudentTable from "@/components/admin/StudentTable";
+import StudentTable from "@/components/admin/students/StudentTable";
 
 interface IStudentsProps {}
 

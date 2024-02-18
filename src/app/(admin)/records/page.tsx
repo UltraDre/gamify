@@ -1,5 +1,5 @@
 "use client";
-import RecordFetch from "@/components/admin/RecordFetch";
+import RecordFetch from "@/components/admin/records/RecordFetch";
 import * as React from "react";
 import { IoIosArrowDown } from "react-icons/io";
 

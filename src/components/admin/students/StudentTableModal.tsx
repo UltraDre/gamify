@@ -10,11 +10,13 @@ import TableModalFetch from "./TableModalFetch";
 interface IStudentTableModalProps {
   toggleStudentModal: () => void;
   studentId: number;
+  margin: boolean;
 }
 
 const StudentTableModal: React.FunctionComponent<IStudentTableModalProps> = ({
   toggleStudentModal,
   studentId,
+  margin,
 }) => {
   const [toggleGotw, setToggleGotw] = React.useState(false);
   const [gotwVal, setGotwVal] = React.useState<string>("image guessing");
@@ -26,6 +28,7 @@ const StudentTableModal: React.FunctionComponent<IStudentTableModalProps> = ({
     name: "",
     level: "",
     matric_no: "",
+    imgUrl: "",
     medals: { first: 0, second: 0, third: 0 },
     imageGuessing: {
       played: 0,
@@ -62,7 +65,11 @@ const StudentTableModal: React.FunctionComponent<IStudentTableModalProps> = ({
   }, [studentId]);
 
   return (
-    <div className="fixed z-[90] w-[80%] left-0 h-screen -top-10 bg-dark bg-opacity-50 flex items-center justify-center">
+    <div
+      className={`fixed z-[90] w-[80%] left-0 h-screen ${
+        margin && "-top-10"
+      } bg-dark bg-opacity-50 flex items-center justify-center`}
+    >
       <div className="w-[600px] pt-20 pb-14 bg-white rounded-md relative">
         <p
           className="text-2xl absolute right-6 top-5 cursor-pointer"
@@ -141,9 +148,7 @@ const StudentTableModal: React.FunctionComponent<IStudentTableModalProps> = ({
 
           <div className="w-[100px] h-[100px] rounded-full overflow-hidden">
             <Image
-              src={
-                "https://res.cloudinary.com/dgdoymhtj/image/upload/v1708253732/product_images/a07021f4386fe60b18047be7e3556f56_didjx5.jpg"
-              }
+              src={studentData?.imgUrl}
               className="grayscale"
               alt="profile image"
               priority
@@ -201,8 +206,8 @@ const StudentTableModal: React.FunctionComponent<IStudentTableModalProps> = ({
             />
           )}
 
-           {/* Quiz Ladder */}
-           {gotwVal === "quiz ladder" && (
+          {/* Quiz Ladder */}
+          {gotwVal === "quiz ladder" && (
             <TableModalFetch
               top10={studentData.quizLadder.top10}
               top3={studentData.quizLadder.top3}
