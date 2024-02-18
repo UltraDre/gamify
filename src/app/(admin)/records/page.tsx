@@ -16,8 +16,7 @@ const Records: React.FunctionComponent<IRecordsProps> = (props) => {
   const [sessionVal, setSessionVal] = React.useState<string>("");
   const [err, setErr] = React.useState<{
     session: string;
-    time: string;
-  }>({ session: "", time: "" });
+  }>({ session: "" });
 
   // FUNCTIONS
   const toggleGOTWFunc = () => {
