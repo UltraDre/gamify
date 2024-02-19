@@ -90,7 +90,7 @@ export const studentArr = [
     id: 4,
     name: "john snow jnr",
     level: "hnd II",
-    matric_no: "15/69/1111",
+    matric_no: "15/69/0096",
     imgUrl:
       "https://res.cloudinary.com/dgdoymhtj/image/upload/v1708253732/product_images/a07021f4386fe60b18047be7e3556f56_didjx5.jpg",
     medals: {
@@ -119,7 +119,7 @@ export const studentArr = [
     id: 5,
     name: "harvey jnr specter",
     level: "hnd II",
-    matric_no: "15/69/1111",
+    matric_no: "15/69/0006",
     imgUrl:
       "https://res.cloudinary.com/dgdoymhtj/image/upload/v1708269535/product_images/amir-seilsepour-5vg_SarQimA-unsplash_jh4tlb.jpg",
     medals: {
@@ -148,7 +148,7 @@ export const studentArr = [
     id: 6,
     name: "harley queen",
     level: "hnd II",
-    matric_no: "15/69/1110",
+    matric_no: "15/69/2222",
     imgUrl:
       "https://res.cloudinary.com/dgdoymhtj/image/upload/v1708269532/product_images/b7f861443e082c7fc4f09117ae41ed0b_mrw4xb.jpg",
     medals: {
@@ -177,7 +177,7 @@ export const studentArr = [
     id: 7,
     name: "john doe",
     level: "hnd II",
-    matric_no: "15/69/000",
+    matric_no: "15/69/0001",
     imgUrl:
     "https://res.cloudinary.com/dgdoymhtj/image/upload/v1708253732/product_images/a07021f4386fe60b18047be7e3556f56_didjx5.jpg",
     medals: {
@@ -206,7 +206,7 @@ export const studentArr = [
     id: 8,
     name: "mike ross",
     level: "hnd II",
-    matric_no: "15/69/1110",
+    matric_no: "15/69/2024",
     imgUrl:
       "https://res.cloudinary.com/dgdoymhtj/image/upload/v1708269535/product_images/amir-seilsepour-5vg_SarQimA-unsplash_jh4tlb.jpg",
     medals: {
@@ -235,7 +235,7 @@ export const studentArr = [
     id: 9,
     name: "jane doe",
     level: "hnd II",
-    matric_no: "15/69/1110",
+    matric_no: "15/69/2000",
     imgUrl:
       "https://res.cloudinary.com/dgdoymhtj/image/upload/v1708269532/product_images/b7f861443e082c7fc4f09117ae41ed0b_mrw4xb.jpg",
     medals: {

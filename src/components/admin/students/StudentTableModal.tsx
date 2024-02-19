@@ -9,14 +9,18 @@ import TableModalFetch from "./TableModalFetch";
 
 interface IStudentTableModalProps {
   toggleStudentModal: () => void;
-  studentId: number;
+  studentId: number | undefined;
   margin: boolean;
+  solo: boolean;
+  width: boolean;
 }
 
 const StudentTableModal: React.FunctionComponent<IStudentTableModalProps> = ({
   toggleStudentModal,
   studentId,
   margin,
+  solo,
+  width,
 }) => {
   const [toggleGotw, setToggleGotw] = React.useState(false);
   const [gotwVal, setGotwVal] = React.useState<string>("image guessing");
@@ -66,17 +70,21 @@ const StudentTableModal: React.FunctionComponent<IStudentTableModalProps> = ({
 
   return (
     <div
-      className={`fixed z-[90] w-[80%] left-0 h-screen ${
+      className={`${
+        !solo && "fixed z-[90] w-[80%] left-0 h-screen bg-dark bg-opacity-50"
+      } ${width && "w-full"} ${
         margin && "-top-10"
-      } bg-dark bg-opacity-50 flex items-center justify-center`}
+      }  flex items-center justify-center`}
     >
       <div className="w-[600px] pt-20 pb-14 bg-white rounded-md relative">
-        <p
-          className="text-2xl absolute right-6 top-5 cursor-pointer"
-          onClick={toggleStudentModal}
-        >
-          <LiaTimesSolid />
-        </p>
+        {!solo && (
+          <p
+            className="text-2xl absolute right-6 top-5 cursor-pointer"
+            onClick={toggleStudentModal}
+          >
+            <LiaTimesSolid />
+          </p>
+        )}
 
         {/* profile details  */}
         <div className="flex px-10 justify-between">

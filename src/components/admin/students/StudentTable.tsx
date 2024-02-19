@@ -61,7 +61,9 @@ const StudentTable: React.FunctionComponent<IStudentTableProps> = (props) => {
       {openStudentModal && (
         <StudentTableModal
           margin={true}
+          solo={false}
           studentId={studentId}
+          width={false}
           toggleStudentModal={toggleStudentModal}
         />
       )}
