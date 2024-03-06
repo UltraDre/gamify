@@ -270,12 +270,12 @@ const MatchUpsGame: React.FunctionComponent<IMatchUpsGameProps> = ({
 
         {/* time  */}
         <div className="absolute top-24 left-48 font-semibold text-5xl">
-          {/* <CountDownTimer
+          <CountDownTimer
           initialTimeInMinutes={5}
           handleEndQuiz={handleEndQuiz}
           getResult={getResults}
           handleQuizSubmit={handleQuizSubmit}
-        /> */}
+        />
         </div>
 
         <div className="w-[80px] h-[80px] rounded-full bg-black text-white flex items-center justify-center">
