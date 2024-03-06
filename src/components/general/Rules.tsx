@@ -26,6 +26,7 @@ const Rules: React.FunctionComponent<IRulesProps> = ({
           alt="mapoly logo"
           width={1000}
           height={1000}
+          priority
         />
       </div>
 

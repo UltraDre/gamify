@@ -25,7 +25,7 @@ export type StudentProp = {
   name: string;
   level: string;
   matric_no: string;
-  imgUrl: string,
+  imgUrl: string;
   medals: { first: number; second: number; third: number };
   imageGuessing: {
     played: number;
@@ -43,4 +43,29 @@ export type StudentProp = {
     correctScore: number;
     wrongAnswer: number;
   };
+};
+
+export type CodeSnippet = {
+  id: string;
+  img: string;
+  correctAnswer: number;
+};
+
+export type matchupData = {
+  _id: string;
+  codeSnippets: CodeSnippet[];
+  expectedOutputs: CodeSnippet[];
+};
+
+
+export type SelectedAnswer = {
+  id: number;
+  codeSnippet: { id: string; selectedAnswer: number; uid: number }[];
+  expectedOutput: { id: string; selectedAnswer: number; uid: number }[];
+};
+
+export type FindUID = {
+  uid: number;
+  selectedAnswer: number;
+  id: string;
 };
