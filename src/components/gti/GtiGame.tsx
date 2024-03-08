@@ -7,7 +7,7 @@ import SubmitModal from "../general/SubmitModal";
 interface IGitGameProps {
   quizData: Qdata[];
   handleEndQuiz: () => void;
-  handleQuizSubmit: (results: { [key: string]: boolean }) => void;
+  handleQuizSubmit: (results: { [key: string]: boolean } | number) => void;
 }
 
 const GtiGame: React.FunctionComponent<IGitGameProps> = ({

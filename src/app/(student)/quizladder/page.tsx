@@ -13,7 +13,7 @@ const QuizLadder: React.FunctionComponent = () => {
     setStart(true);
   };
 
-  const handleQuizSubmit = (results: { [key: string]: boolean }) => {
+  const handleQuizSubmit = (results: { [key: string]: boolean } | number) => {
     console.log(results);
   };
 

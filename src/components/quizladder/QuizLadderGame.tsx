@@ -8,7 +8,7 @@ import SubmitModal from "../general/SubmitModal";
 interface IQuizLadderGameProps {
   quizData: QlData[];
   handleEndQuiz: () => void;
-  handleQuizSubmit: (results: { [key: string]: boolean }) => void;
+  handleQuizSubmit: (results: { [key: string]: boolean } | number) => void;
 }
 
 const QuizLadderGame: React.FunctionComponent<IQuizLadderGameProps> = ({

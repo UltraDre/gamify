@@ -57,7 +57,6 @@ export type matchupData = {
   expectedOutputs: CodeSnippet[];
 };
 
-
 export type SelectedAnswer = {
   id: number;
   codeSnippet: { id: string; selectedAnswer: number; uid: number }[];
@@ -68,4 +67,16 @@ export type FindUID = {
   uid: number;
   selectedAnswer: number;
   id: string;
+};
+
+export type SlidePuzzleType = {
+  originalImg: string;
+  slidePieces: SlidePiecesType[];
+  imageName: string;
+  puzzleSize: number;
+};
+
+export type SlidePiecesType = {
+  id: number;
+  imgUrl: string;
 };

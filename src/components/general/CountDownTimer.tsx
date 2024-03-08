@@ -1,17 +1,24 @@
+import { SlidePiecesType } from "@/types/types";
 import * as React from "react";
 
 interface ICountDownTimerProps {
   initialTimeInMinutes: number;
-  handleEndQuiz: () => void;
-  getResult: () => {};
-  handleQuizSubmit: (results: { [key: string]: boolean }) => void;
+  handleEndQuiz?: () => void;
+  getResult?: () => {};
+  handleQuizSubmit?: (results: { [key: string]: boolean } | number) => void;
+  shuffledArray?: SlidePiecesType[];
+  handleSubmit?: (result: number) => void;
+  getPuzzleResult?: (arr: SlidePiecesType[]) => number;
 }
 
 const CountDownTimer: React.FunctionComponent<ICountDownTimerProps> = ({
   initialTimeInMinutes,
   handleEndQuiz,
   handleQuizSubmit,
+  shuffledArray,
   getResult,
+  handleSubmit,
+  getPuzzleResult,
 }) => {
   const [timer, setTimer] = React.useState(initialTimeInMinutes * 60);
 
@@ -19,8 +26,12 @@ const CountDownTimer: React.FunctionComponent<ICountDownTimerProps> = ({
     const intervalId = setInterval(() => {
       if (timer <= 0) {
         clearInterval(intervalId);
-        handleEndQuiz();
-        handleQuizSubmit(getResult());
+        if (shuffledArray && handleSubmit && getPuzzleResult) {
+          handleSubmit(getPuzzleResult(shuffledArray));
+        } else if (handleEndQuiz && handleQuizSubmit && getResult) {
+          handleEndQuiz();
+          handleQuizSubmit(getResult());
+        }
       } else {
         setTimer((prev) => prev - 1);
       }

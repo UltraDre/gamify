@@ -136,3 +136,77 @@ export const MatchUpsData = [
   },
 ];
 
+
+export const SlidePuzzleDataThree = {
+  originalImg: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709734432/product_images/image-600x600_v9kj23.png",
+  slidePieces: [
+    {id: 1, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709734498/product_images/Puzzle/00_pe7tm6.jpg"},
+    {id: 2, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709734499/product_images/Puzzle/10_yzam5u.jpg"},
+    {id: 3, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709734501/product_images/Puzzle/20_nojou3.jpg"},
+    {id: 4, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709734499/product_images/Puzzle/01_oega7l.jpg"},
+    {id: 5, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709734500/product_images/Puzzle/11_lo984p.jpg"},
+    {id: 6, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709734502/product_images/Puzzle/21_h6cxfm.jpg"},
+    {id: 7, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709734499/product_images/Puzzle/02_awpf7q.jpg"},
+    {id: 8, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709734500/product_images/Puzzle/12_atfslb.jpg"},
+    {id: 9, imgUrl: ""},
+  ],
+  imageName: "computer setup",
+  puzzleSize: 3
+}
+
+export const SlidePuzzleDataFour = {
+  originalImg: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709895921/product_images/Puzzle/image-600x600c_pjnkoh.png",
+  slidePieces: [
+    {id: 1, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709896157/product_images/Puzzle/1_xva1dm.jpg"},
+    {id: 2, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709896158/product_images/Puzzle/2_l4nypc.jpg"},
+    {id: 3, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709896158/product_images/Puzzle/3_uqewww.jpg"},
+    {id: 4, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709896158/product_images/Puzzle/4_r2vchd.jpg"},
+    {id: 5, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709896158/product_images/Puzzle/5_turc1z.jpg"},
+    {id: 6, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709896158/product_images/Puzzle/6_lnqygh.jpg"},
+    {id: 7, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709896159/product_images/Puzzle/7_rwwmtz.jpg"},
+    {id: 8, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709896159/product_images/Puzzle/8_de6zla.jpg"},
+    {id: 9, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709896159/product_images/Puzzle/9_vbctu9.jpg"},
+    {id: 10, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709896159/product_images/Puzzle/10_n0pswz.jpg"},
+    {id: 11, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709896161/product_images/Puzzle/11_hiz2d3.jpg"},
+    {id: 12, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709896162/product_images/Puzzle/12_zh9nap.jpg"},
+    {id: 13, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709896162/product_images/Puzzle/13_xjzqh0.jpg"},
+    {id: 14, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709896162/product_images/Puzzle/14_moygzr.jpg"},
+    {id: 15, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709896162/product_images/Puzzle/15_lsdtq2.jpg"},
+    {id: 16, imgUrl: ""},
+  ],
+  imageName: "motherboard",
+  puzzleSize: 4
+}
+
+export const SlidePuzzleDataFive = {
+  originalImg: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709902852/product_images/Puzzle/image-600x600g_o2x9gt.png",
+  slidePieces: [
+    {id: 1, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903130/product_images/Puzzle/00_tt8oin.jpg"},
+    {id: 2, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903130/product_images/Puzzle/10_ks0fuf.jpg"},
+    {id: 3, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903130/product_images/Puzzle/20_aqutuv.jpg    "},
+    {id: 4, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903130/product_images/Puzzle/30_a7yylo.jpg    "},
+    {id: 5, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903130/product_images/Puzzle/40_bzu57d.jpg    "},
+    {id: 6, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903289/product_images/Puzzle/01_zrwacj.jpg    "},
+    {id: 7, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903290/product_images/Puzzle/11_ex0fn1.jpg    "},
+    {id: 8, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903290/product_images/Puzzle/21_s9krt2.jpg    "},
+    {id: 9, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903290/product_images/Puzzle/31_qhlnoj.jpg"},
+    {id: 10, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903291/product_images/Puzzle/41_civq46.jpg    "},
+    {id: 11, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903439/product_images/Puzzle/02_dd53ep.jpg    "},
+    {id: 12, imgUrl: " https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903439/product_images/Puzzle/12_oyenu4.jpg    "},
+    {id: 13, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903439/product_images/Puzzle/22_ouwy2d.jpg    "},
+    {id: 14, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903440/product_images/Puzzle/32_oqsaqy.jpg    "},
+    {id: 15, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903441/product_images/Puzzle/42_mbbefy.jpg    "},
+    {id: 16, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903649/product_images/Puzzle/03_ktzsoc.jpg    "},
+    {id: 17, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903649/product_images/Puzzle/13_ubt4yd.jpg    "},
+    {id: 18, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903650/product_images/Puzzle/23_bli0zg.jpg    "},
+    {id: 19, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903650/product_images/Puzzle/33_fw6mpj.jpg    "},
+    {id: 20, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903651/product_images/Puzzle/43_kebv2k.jpg    "},
+    {id: 21, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903828/product_images/Puzzle/04_gro9hz.jpg    "},
+    {id: 22, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903828/product_images/Puzzle/14_qae7sj.jpg    "},
+    {id: 23, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903828/product_images/Puzzle/24_p1zjtd.jpg    "},
+    {id: 24, imgUrl: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709903829/product_images/Puzzle/34_z1aql1.jpg    "},
+    {id: 25, imgUrl: ""},
+  ],
+  imageName: "mouse",
+  puzzleSize: 5
+}

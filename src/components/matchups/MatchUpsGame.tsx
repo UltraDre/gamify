@@ -10,7 +10,7 @@ import SubmitModal from "../general/SubmitModal";
 interface IMatchUpsGameProps {
   matchUpsData: matchupData[];
   handleEndQuiz: () => void;
-  handleQuizSubmit: (results: { [key: string]: boolean }) => void;
+  handleQuizSubmit: (results: { [key: string]: boolean } | number) => void;
 }
 
 const MatchUpsGame: React.FunctionComponent<IMatchUpsGameProps> = ({
