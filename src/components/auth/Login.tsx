@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import Watermark from "../general/watermark";
 
 type FormInput = {
   identify: string;
@@ -31,6 +32,7 @@ const Login = () => {
 
   return (
     <div className="w-full px-20 flex h-screen items-center justify-center">
+      <Watermark />
       <div className="w-1/2 h-full flex items-center justify-center">
         <div className="w-[600px] h-[600px]">
           <Image
