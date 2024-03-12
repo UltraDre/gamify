@@ -1,5 +1,6 @@
 "use client";
 import RecordFetch from "@/components/admin/records/RecordFetch";
+import { gameList } from "@/utils/gameList";
 import * as React from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
@@ -97,18 +98,15 @@ const Records: React.FunctionComponent<IRecordsProps> = (props) => {
           </div>
           {toggleGotw && (
             <div className="rounded-md bg-white text-xl space-y-5 w-full py-4 px-5 capitalize absolute z-50">
-              <p
-                onClick={() => gotwValFunc("image guessing")}
-                className="cursor-pointer"
-              >
-                image guessing
-              </p>
-              <p
-                onClick={() => gotwValFunc("quiz ladder")}
-                className="cursor-pointer"
-              >
-                quiz ladder
-              </p>
+              {gameList.map((items) => (
+                <p
+                  onClick={() => gotwValFunc(items)}
+                  className="cursor-pointer"
+                  key={items}
+                >
+                  {items}
+                </p>
+              ))}
             </div>
           )}
         </div>

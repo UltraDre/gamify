@@ -1,4 +1,5 @@
 "use client";
+import { gameList } from "@/utils/gameList";
 import * as React from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
@@ -65,18 +66,15 @@ const Settings: React.FunctionComponent<ISettingsProps> = (props) => {
           </div>
           {toggleGotw && (
             <div className="rounded-md bg-white text-xl space-y-5 w-full py-4 px-5 capitalize absolute z-50">
-              <p
-                onClick={() => gotwValFunc("image guessing")}
-                className="cursor-pointer"
-              >
-                image guessing
-              </p>
-              <p
-                onClick={() => gotwValFunc("quiz ladder")}
-                className="cursor-pointer"
-              >
-                quiz ladder
-              </p>
+              {gameList.map((items) => (
+                <p
+                  onClick={() => gotwValFunc(items)}
+                  className="cursor-pointer"
+                  key={items}
+                >
+                  {items}
+                </p>
+              ))}
             </div>
           )}
         </div>
@@ -129,11 +127,19 @@ const Settings: React.FunctionComponent<ISettingsProps> = (props) => {
         <div className="space-y-3">
           <p className="capitalize text-lg">game active</p>
           <div className="flex items-center gap-x-10">
-            <button className={`w-24 rounded-md duration-200 ${gameActive === "on" ? "bg-blue text-light " : "bg-light" } px-5 py-4 capitalize`} onClick={() => gameActiveFunc("on")}>
+            <button
+              className={`w-24 rounded-md duration-200 ${
+                gameActive === "on" ? "bg-blue text-light " : "bg-light"
+              } px-5 py-4 capitalize`}
+              onClick={() => gameActiveFunc("on")}
+            >
               on
             </button>
             <button
-              className={`w-24 rounded-md duration-200 ${gameActive === "off" ? "bg-blue text-light " : "bg-light" } px-5 py-4 capitalize`} onClick={() => gameActiveFunc("off")}
+              className={`w-24 rounded-md duration-200 ${
+                gameActive === "off" ? "bg-blue text-light " : "bg-light"
+              } px-5 py-4 capitalize`}
+              onClick={() => gameActiveFunc("off")}
             >
               off
             </button>

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { StudentProp } from "@/types/types";
 import { studentArr } from "@/utils/studentData";
 import TableModalFetch from "./TableModalFetch";
+import { gameList } from "@/utils/gameList";
 
 interface IStudentTableModalProps {
   toggleStudentModal: () => void;
@@ -186,18 +187,15 @@ const StudentTableModal: React.FunctionComponent<IStudentTableModalProps> = ({
             </div>
             {toggleGotw && (
               <div className="rounded-md bg-white text-xl space-y-5 w-full py-4 px-5 capitalize absolute z-50">
+                {gameList.map((items) => (
                 <p
-                  onClick={() => gotwValFunc("image guessing")}
+                  onClick={() => gotwValFunc(items)}
                   className="cursor-pointer"
+                  key={items}
                 >
-                  image guessing
+                  {items}
                 </p>
-                <p
-                  onClick={() => gotwValFunc("quiz ladder")}
-                  className="cursor-pointer"
-                >
-                  quiz ladder
-                </p>
+              ))}
               </div>
             )}
           </div>

@@ -1,0 +1,1 @@
+export const gameList = ["image guessing", "quiz ladder", "match ups", "slide puzzle"]
