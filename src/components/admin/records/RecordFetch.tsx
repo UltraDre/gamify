@@ -1,6 +1,7 @@
 import * as React from "react";
 import RecordFetchLadder from "./RecordFetchLadder";
 import RecordFetchGuess from "./RecordFetchGuess";
+import RecordFetchMatchups from "./RecordFetchMatchups";
 
 interface IRecordFetchProps {
   game: string;
@@ -20,6 +21,8 @@ const RecordFetch: React.FunctionComponent<IRecordFetchProps> = ({
       {game === "quiz ladder" && <RecordFetchLadder />}
 
       {game === "image guessing" && <RecordFetchGuess />}
+
+      {game === "match ups" && <RecordFetchMatchups />}
     </div>
   );
 };
