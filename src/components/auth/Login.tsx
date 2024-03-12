@@ -50,6 +50,8 @@ const Login = () => {
       } else {
         setFormErr((prev) => ({ ...prev, isErr: true }));
       }
+    } else {
+      setFormErr((prev) => ({ ...prev, isErr: false }));
     }
   }, [formInput.identify]);
 
