@@ -13,8 +13,8 @@ interface IImageGuessSetupProps {}
 const ImageGuessSetup: React.FunctionComponent<IImageGuessSetupProps> = (
   props
 ) => {
-  const [conditionMeet, setConditionMeet] = React.useState<boolean>(false);
   // USE STATES
+  const [conditionMeet, setConditionMeet] = React.useState<boolean>(false);
   const [question, setQuestion] = React.useState<string>("");
   const [answer, setAnswer] = React.useState<string>("");
   const [imgFile, setImgFile] = React.useState<File | string>("");

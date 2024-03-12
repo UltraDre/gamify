@@ -6,6 +6,7 @@ import QuestionCard from "./QuestionsCard";
 import AnswerCard from "./AnswerCard";
 import { FindUID, SelectedAnswer, matchupData } from "@/types/types";
 import SubmitModal from "../general/SubmitModal";
+import ErrorDisplay from "../general/ErrorDisplay";
 
 interface IMatchUpsGameProps {
   matchUpsData: matchupData[];
@@ -244,10 +245,7 @@ const MatchUpsGame: React.FunctionComponent<IMatchUpsGameProps> = ({
       <div className="w-full h-screen px-40 py-20 flex-col flex items-center justify-center relative">
         {/* Err msg  */}
         {errText && (
-          <div className="absolute shadow-md rounded-md overflow-hidden z-50 text-xl bg-white top-20 right-20 flex">
-            <div className="h-[10] w-2.5 bg-red-500"></div>
-            <p className="px-6 py-5 text-red-500">{errText}</p>
-          </div>
+          <ErrorDisplay errText={errText} />
         )}
 
         {/* user profile  */}

@@ -1,7 +1,9 @@
 "use client";
 import ListQuestions from "@/components/admin/quiz_ladder/ListQuestions";
 import { AnswersProp, QlData } from "@/types/types";
+import { adminRoutes } from "@/utils/adminRoutes";
 import { quizLadderData } from "@/utils/questionData";
+import { useRouter } from "next/navigation";
 import * as React from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
@@ -11,6 +13,7 @@ const QuizLadderSetup: React.FunctionComponent<IQuizLadderSetupProps> = (
   props
 ) => {
   // USE STATES
+  const [conditionMeet, setConditionMeet] = React.useState<boolean>(false);
   const [tempData, setTempData] = React.useState<QlData[]>(quizLadderData);
   const [showCorrectAns, setShowCorrectAns] = React.useState<boolean>(false);
   const [correctAns, setCorrectAns] = React.useState<string>("a");
@@ -37,6 +40,7 @@ const QuizLadderSetup: React.FunctionComponent<IQuizLadderSetupProps> = (
 
   // DECLARES
   const optionsArr = ["a", "b", "c", "d"];
+  const router = useRouter();
 
   // FUNCTIONS
   const toggleAns = () => {
@@ -133,7 +137,27 @@ const QuizLadderSetup: React.FunctionComponent<IQuizLadderSetupProps> = (
     }
   }, [correctAns, question, answers]);
 
-  return (
+  React.useEffect(() => {
+    const sessionId = localStorage.getItem("dsspid");
+    const gotw = localStorage.getItem("dgoftw") === "quiz_ladder";
+    const semes = localStorage.getItem("dsspid");
+    const level = localStorage.getItem("dslpidd");
+    const time = localStorage.getItem("dpidtp");
+
+    if (sessionId && gotw && semes && level && time) {
+      setConditionMeet(true);
+    }
+
+    const timeOut = setTimeout(() => {
+      if (!conditionMeet) {
+        router.push(adminRoutes.game_setting);
+      }
+    }, 2000);
+
+    return () => clearTimeout(timeOut);
+  }, [conditionMeet]);
+
+  return conditionMeet ? (
     <div className="bg-light min-w-full min-h-screen py-12 flex items-center justify-center flex-col">
       {/* Questions  */}
       <p className="text-3xl font-semibold capitalize">questions</p>
@@ -240,7 +264,7 @@ const QuizLadderSetup: React.FunctionComponent<IQuizLadderSetupProps> = (
         </form>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default QuizLadderSetup;

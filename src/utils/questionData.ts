@@ -96,7 +96,7 @@ export const quizLadderData = [
 
 export const MatchUpsData = [
   {
-    _id: "questionId1",
+    _id: "1",
     codeSnippets: [
       { id: "cs1", img: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709388885/product_images/ec0e526b-ea45-40b5-8c41-622b786fedbf.png", correctAnswer: 1 },
       { id: "cs2", img: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709388777/product_images/4aec855d-6b78-4d63-a1a0-b442af4e0e15.png", correctAnswer: 3 },
@@ -109,7 +109,7 @@ export const MatchUpsData = [
     ],
   },
   {
-    _id: "questionId2",
+    _id: "2",
     codeSnippets: [
       { id: "cs4", img: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709389605/product_images/41183da1-043d-40a9-81cc-aad9829f9dc9.png", correctAnswer: 3 },
       { id: "cs5", img: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709389503/product_images/8dfb93c9-47c6-470e-9c6e-72f7daf07e07.png", correctAnswer: 1 },
@@ -122,7 +122,7 @@ export const MatchUpsData = [
     ],
   },
   {
-    _id: "questionId3",
+    _id: "3",
     codeSnippets: [
       { id: "cs7", img: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709720687/product_images/04f6506b-8f5b-4d95-ab57-ff59762385cb.png", correctAnswer: 3 },
       { id: "cs8", img: "https://res.cloudinary.com/dgdoymhtj/image/upload/v1709720351/product_images/872a51a0-ff3e-45df-9e95-30251cd0bc76.png", correctAnswer: 1 },

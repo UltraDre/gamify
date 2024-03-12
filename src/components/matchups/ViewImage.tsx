@@ -12,7 +12,7 @@ const ViewImage: React.FunctionComponent<IViewImageProps> = ({
 }) => {
   return (
     <div
-      className="fixed z-50 -top-2 inset-0 bg-black bg-opacity-90 flex justify-center items-center"
+      className="fixed z-[92] -top-2 inset-0 bg-black bg-opacity-90 flex justify-center items-center"
       onClick={toggleShow}
     >
       <div className="w-[700px] h-[700px] bg-white rounded-md overflow-hidden">

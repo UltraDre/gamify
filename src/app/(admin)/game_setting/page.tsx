@@ -5,12 +5,11 @@ import { useRouter } from "next/navigation";
 import * as React from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
-
 interface IGameSettingProps {}
 
 type Err = {
-  session: string;
-  time: string;
+  session: string | null;
+  time: string | null;
 };
 
 const GameSetting: React.FunctionComponent<IGameSettingProps> = (props) => {
@@ -22,7 +21,7 @@ const GameSetting: React.FunctionComponent<IGameSettingProps> = (props) => {
   const [semesterVal, setSemesterVal] = React.useState<string>("first");
   const [sessionVal, setSessionVal] = React.useState<string>("");
   const [timeVal, setTimeVal] = React.useState<string>("");
-  const [err, setErr] = React.useState<Err>({ session: "", time: "" });
+  const [err, setErr] = React.useState<Err>({ session: null, time: null });
 
   // DECLARES
   const router = useRouter();
@@ -104,8 +103,22 @@ const GameSetting: React.FunctionComponent<IGameSettingProps> = (props) => {
 
     if (gotwVal === "image guessing") {
       router.push(adminRoutes.image_guessing);
-    } else if (gotwVal === "quiz ladder") {
+      return;
+    }
+
+    if (gotwVal === "quiz ladder") {
       router.push(adminRoutes.quiz_ladder);
+      return;
+    }
+
+    if (gotwVal === "match ups") {
+      router.push(adminRoutes.matchups);
+      return;
+    }
+
+    if (gotwVal === "slide puzzle") {
+      router.push(adminRoutes.slide_puzzle);
+      return;
     }
   };
 
@@ -161,7 +174,7 @@ const GameSetting: React.FunctionComponent<IGameSettingProps> = (props) => {
             onChange={(e) => setSessionVal(e.target.value)}
             className="min-w-[200px] rounded-md bg-light px-5 py-4 focus:outline-none"
           />
-          {sessionVal === "" && err.session === "error occured" && (
+          {!sessionVal && err.session && (
             <p className="absolute text-red-600">Session cannot be empty</p>
           )}
         </div>
@@ -210,7 +223,7 @@ const GameSetting: React.FunctionComponent<IGameSettingProps> = (props) => {
             onChange={(e) => setTimeVal(e.target.value)}
             className="min-w-[200px] rounded-md bg-light px-5 py-4 focus:outline-none"
           />
-          {timeVal === "" && err.time === "error occured" && (
+          {!timeVal && err.time && (
             <p className="absolute text-red-600">Time cannot be empty</p>
           )}
         </div>
