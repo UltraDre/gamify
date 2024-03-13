@@ -88,7 +88,7 @@ const PuzzleSetup: React.FunctionComponent<IPuzzleSetupProps> = ({
       originalImg,
       puzzleSize: size,
       imageName,
-      slidePieces: boardPieces,
+      slidePieces: [...boardPieces, { id: boardPieces.length + 1, imgUrl: "" }],
     });
   };
 

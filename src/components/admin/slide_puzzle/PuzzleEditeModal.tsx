@@ -152,25 +152,30 @@ const PuzzleEditModal: React.FunctionComponent<IPuzzleEditModalProps> = ({
                     } border border-[#0e0b16] cursor-pointer relative overflow-hidden`}
                     key={id}
                   >
-                    <label
-                      htmlFor={`${id + 1}`}
-                      className={`cursor-pointer text-7xl absolute z-50  text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`}
-                    >
-                      <CiCirclePlus />
-                    </label>
-                    <input
-                      type="file"
-                      hidden
-                      id={`${id + 1}`}
-                      onChange={(e) => handleImageChange(e, id)}
-                    />
-                    <Image
-                      src={imgUrl}
-                      alt="img"
-                      width={1000}
-                      height={1000}
-                      priority={true}
-                    />
+                    {imgUrl !== "" && (
+                      <>
+                        <label
+                          htmlFor={`${id + 1}`}
+                          className={`cursor-pointer text-7xl absolute z-50  text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`}
+                        >
+                          <CiCirclePlus />
+                        </label>
+                        <input
+                          type="file"
+                          hidden
+                          id={`${id + 1}`}
+                          onChange={(e) => handleImageChange(e, id)}
+                        />
+
+                        <Image
+                          src={imgUrl}
+                          alt="img"
+                          width={1000}
+                          height={1000}
+                          priority={true}
+                        />
+                      </>
+                    )}
                   </div>
                 ))}
               </div>
