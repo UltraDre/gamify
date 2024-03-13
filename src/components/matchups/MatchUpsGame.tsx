@@ -258,6 +258,7 @@ const MatchUpsGame: React.FunctionComponent<IMatchUpsGameProps> = ({
               alt="profile image"
               width={1000}
               height={1000}
+              priority
             />
           </div>
           <div className="w-[200px]">

@@ -84,6 +84,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
             alt="profile image"
             width={1000}
             height={1000}
+            priority
           />
         </div>
         <div className="text-light text-lg">

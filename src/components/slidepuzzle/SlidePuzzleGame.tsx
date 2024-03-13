@@ -31,6 +31,7 @@ const SlidePuzzleGame: React.FunctionComponent<ISlidePuzzleGameProps> = ({
               alt="profile image"
               width={1000}
               height={1000}
+              priority
             />
           </div>
           <div className="w-[200px]">
