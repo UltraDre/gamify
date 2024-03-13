@@ -1,5 +1,6 @@
 import Sidebar from "@/components/admin/Sidebar";
 import "../globals.css";
+import AdminProtected from "@/components/admin/AdminProtected";
 
 export default function RootLayout({
   children,
@@ -10,8 +11,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className="flex w-full">
-          <div className="w-[80%]">{children}</div>
-          <Sidebar />
+          <AdminProtected>
+            <div className="w-[80%]">{children}</div>
+            <Sidebar />
+          </AdminProtected>
         </div>
       </body>
     </html>

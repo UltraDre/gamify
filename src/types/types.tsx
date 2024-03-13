@@ -80,3 +80,9 @@ export type SlidePiecesType = {
   id: number;
   imgUrl: string;
 };
+
+export type otra = {
+  totalCorrectScore: number;
+};
+
+export type CombinedType = (StudentProp & otra)[];

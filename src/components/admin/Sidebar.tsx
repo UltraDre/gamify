@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import * as React from "react";
 import { TiHome } from "react-icons/ti";
 import { PiGameControllerFill } from "react-icons/pi";
@@ -54,6 +54,13 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
 
   //   DECLARES
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem("minadoggledin");
+    localStorage.removeItem("_inlogegdwoh");
+    router.push("/");
+  };
 
   return (
     <div className="bg-dark w-[20%] h-screen fixed right-0 py-12">
@@ -115,6 +122,13 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
           </div>
         ))}
       </div>
+
+      <button
+        className="capitalize text-xl text-white bg-blue rounded-md px-10 py-4 absolute left-10 bottom-10"
+        onClick={handleLogout}
+      >
+        logout
+      </button>
     </div>
   );
 };

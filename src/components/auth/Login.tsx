@@ -18,6 +18,7 @@ const Login = () => {
     touch: false,
     isErr: false,
   });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // DECLARES
   const router = useRouter();
@@ -27,17 +28,24 @@ const Login = () => {
     e.preventDefault();
 
     if (formInput.identify === "admin" && formInput.pass === "1234") {
-      router.push("/admin_panel_setup");
+      setIsLoading(true);
+      localStorage.setItem("minadoggledin", "true");
+      localStorage.setItem("_inlogegdwoh", "admin");
+
+      setTimeout(() => {
+        router.push("/admin_panel_setup");
+      }, 1200);
     } else {
       const pattern = /^\d{2}\/\d{2}\/\d{4}$/;
       if (!formErr.isErr && pattern.test(formInput.identify)) {
+        setIsLoading(true);
         router.push("/gotw");
       }
     }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormInput((prev) => ({ ...prev, identify: e.target.value }))
+    setFormInput((prev) => ({ ...prev, identify: e.target.value }));
     setFormErr((prev) => ({ ...prev, touch: true }));
   };
 
@@ -112,8 +120,11 @@ const Login = () => {
                 Matric number can only be in 00/00/0000 format
               </p>
             )}
-            <button className="bg-black rounded-md mt-5 text-white px-10 py-6 text-xl text-center w-[200px]">
-              Login
+            <button
+              className="bg-black rounded-md mt-5 text-white px-10 py-6 text-xl text-center w-[200px]"
+              disabled={isLoading}
+            >
+              {isLoading ? "Logging in" : "Login"}
             </button>
           </form>
         </div>
