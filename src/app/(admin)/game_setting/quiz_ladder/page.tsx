@@ -139,7 +139,7 @@ const QuizLadderSetup: React.FunctionComponent<IQuizLadderSetupProps> = (
 
   React.useEffect(() => {
     const sessionId = localStorage.getItem("dsspid");
-    const gotw = localStorage.getItem("dgoftw") === "quiz_ladder";
+    const gotw = localStorage.getItem("dgoftw") === "quiz ladder";
     const semes = localStorage.getItem("dsspid");
     const level = localStorage.getItem("dslpidd");
     const time = localStorage.getItem("dpidtp");
