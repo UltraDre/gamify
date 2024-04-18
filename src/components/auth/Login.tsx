@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Watermark from "../general/watermark";
+import Cookies from "js-cookie";
 
 type FormInput = {
   identify: string;
@@ -39,6 +40,7 @@ const Login = () => {
       const pattern = /^\d{2}\/\d{2}\/\d{4}$/;
       if (!formErr.isErr && pattern.test(formInput.identify)) {
         setIsLoading(true);
+        Cookies.set("gamify_studentId", formInput.identify)
         router.push("/gotw");
       }
     }

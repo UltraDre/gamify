@@ -1,8 +1,10 @@
+"use client"
 import TopStudents from "@/components/admin/dashboard/TopStudents";
 import { calScore, sortStudent } from "@/utils/functions";
 import { hnd1, hnd2, nd1, nd2 } from "@/utils/studentData";
 import Image from "next/image";
 import * as React from "react";
+import Cookies from "js-cookie";
 
 interface IAdminProps {}
 
@@ -38,6 +40,7 @@ const Admin: React.FunctionComponent<IAdminProps> = (props) => {
     },
   ];
 
+  // DECLARES 
   //   hnd 1
   const hnd1D = calScore(hnd1);
   const hnd1Data = sortStudent(hnd1D);
@@ -53,6 +56,12 @@ const Admin: React.FunctionComponent<IAdminProps> = (props) => {
   //   nd 2
   const nd2D = calScore(nd2);
   const nd2Data = sortStudent(nd2D);
+
+  const session = Cookies.get("gamify_session");
+  const game_active = Cookies.get("gamify_game_active");
+  const game_semester = Cookies.get("gamify_game_semester");
+  const gotw = Cookies.get("gamify_gotw");
+  const last_game_played = Cookies.get("gamify_last_game_played");
 
   return (
     <div className="w-full bg-light min-h-screen px-10 py-20">
@@ -134,7 +143,7 @@ const Admin: React.FunctionComponent<IAdminProps> = (props) => {
                 <p className="text-gray-200 text-xl">Top 3 students</p>
               </div>
 
-              <TopStudents studentData={nd1Data} />
+              <TopStudents studentData={nd2Data} />
             </div>
           </div>
         </div>
@@ -145,27 +154,27 @@ const Admin: React.FunctionComponent<IAdminProps> = (props) => {
           <div className="space-y-6 mt-5">
             <div className="space-y-1">
               <p className="text-xl font-semibold capitalize">last game played</p>
-              <p className="text-lg text-gray-500 font-medium capitalize">slide puzzle</p>
+              <p className="text-lg text-gray-500 font-medium capitalize">{last_game_played}</p>
             </div>
 
             <div className="space-y-1">
               <p className="text-xl font-semibold capitalize">game of the week</p>
-              <p className="text-lg text-gray-500 font-medium capitalize">image guessing</p>
+              <p className="text-lg text-gray-500 font-medium capitalize">{gotw}</p>
             </div>
 
             <div className="space-y-1">
               <p className="text-xl font-semibold capitalize">session</p>
-              <p className="text-lg text-gray-500 font-medium capitalize">2021/2022</p>
+              <p className="text-lg text-gray-500 font-medium capitalize">{session}</p>
             </div>
 
             <div className="space-y-1">
               <p className="text-xl font-semibold capitalize">semester</p>
-              <p className="text-lg text-gray-500 font-medium capitalize">first</p>
+              <p className="text-lg text-gray-500 font-medium capitalize">{game_semester}</p>
             </div>
 
             <div className="space-y-1">
               <p className="text-xl font-semibold capitalize">game active</p>
-              <p className="text-lg text-gray-500 font-medium capitalize">off</p>
+              <p className="text-lg text-gray-500 font-medium capitalize">{game_active}</p>
             </div>
           </div>
         </div>

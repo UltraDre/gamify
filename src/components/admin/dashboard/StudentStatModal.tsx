@@ -1,10 +1,10 @@
 import { StudentProp } from "@/types/types";
-import { gameList } from "@/utils/gameList";
 import Image from "next/image";
 import * as React from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { LiaTimesSolid } from "react-icons/lia";
 import TableModalFetch from "../students/TableModalFetch";
+import { gameList } from "@/utils/gameList";
 
 interface IStudentStatModalProps {
   studentDataCollect: StudentProp[];

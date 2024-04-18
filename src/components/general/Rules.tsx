@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import Cookies from "js-cookie";
+import Link from "next/link";
 
 interface IRulesProps {
   startFunc: () => void;
@@ -17,6 +19,22 @@ const Rules: React.FunctionComponent<IRulesProps> = ({
   time,
   startFunc,
 }) => {
+  const [isReady, setIsReady] = useState<boolean>(false);
+  const studentId = Cookies.get("gamify_studentId");
+  const game_active = Cookies.get("gamify_game_active");
+  const studentUrlId = useMemo(() => {
+    if (studentId) {
+      const newStudentId = studentId.split("/").join("");
+      return newStudentId;
+    }
+  }, [studentId]);
+
+  useEffect(() => {
+    if (studentId && game_active) {
+      setIsReady(true);
+    }
+  }, [studentId, game_active]);
+
   return (
     <div className="w-full h-screen py-10 px-20 relative flex items-center justify-center">
       {/* logo  */}
@@ -54,12 +72,29 @@ const Rules: React.FunctionComponent<IRulesProps> = ({
             <p>{objective}</p>
           </div>
         </div>
-        <button
-          className="w-[200px] py-5 text-center capitalize bg-black text-white text-xl rounded-md mt-14"
-          onClick={startFunc}
-        >
-          start
-        </button>
+
+        {isReady && game_active === "on" ? (
+          <button
+            className="w-[200px] py-5 text-center capitalize bg-black text-white text-xl rounded-md mt-14"
+            onClick={startFunc}
+          >
+            start
+          </button>
+        ) : (
+          <div className="mt-14 text-xl">
+            <p className="text-center text-red-500 font-medium">
+              Sorry! Game is currently not active.
+            </p>
+            {isReady && studentUrlId && (
+              <div className="flex gap-x-2 justify-center">
+                <p className="">View leaderboard instead</p>
+                <Link href={`/student/${studentUrlId}`} className="text-blue">
+                  Yes
+                </Link>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

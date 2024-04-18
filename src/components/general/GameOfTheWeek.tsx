@@ -4,9 +4,9 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 interface IGameOfTheWeekProps {
-  game_link: string;
-  game_name: string;
-  game_img: string;
+  game_link: string | undefined;
+  game_name: string | undefined;
+  game_img: string | undefined;
 }
 
 const GameOfTheWeek: React.FunctionComponent<IGameOfTheWeekProps> = ({
@@ -36,7 +36,7 @@ const GameOfTheWeek: React.FunctionComponent<IGameOfTheWeekProps> = ({
         <div className="w-full">
           <div className="w-[350px] h-[350px]">
             <Image
-              src={game_img}
+              src={game_img ? game_img : ""}
               alt="game of the week"
               width={1000}
               height={1000}
