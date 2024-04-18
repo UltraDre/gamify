@@ -164,7 +164,7 @@ const Settings: React.FunctionComponent<ISettingsProps> = (props) => {
         router.push(adminRoutes.dashboard);
       }, 3000);
     }
-  }, [isDone])
+  }, [isDone, router])
 
   return (
     <div className="bg-light min-h-screen flex items-center justify-center">

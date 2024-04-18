@@ -27,7 +27,7 @@ const AdminProtected: React.FunctionComponent<IAdminProtectedProps> = ({
     } else {
       setConditionMeet(true);
     }
-  }, []);
+  }, [router]);
 
   return conditionMeet ? <>{children}</> : null;
 };

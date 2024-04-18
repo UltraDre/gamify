@@ -60,7 +60,7 @@ const QuestionCard: React.FunctionComponent<IQuestionCardProps> = ({
     };
 
     isSelected();
-  }, [selectedAnswers]);
+  }, [selectedAnswers, currentQuestionIndex, codeSnippet.id]);
 
   return (
     <>

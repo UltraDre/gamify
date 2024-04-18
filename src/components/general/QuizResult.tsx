@@ -21,7 +21,7 @@ const QuizResult: React.FunctionComponent<IQuizResultProps> = ({
       <p className="text-3xl capitalize font-medium">Saheeb olalekan</p>
       <p className="text-xl">Matric no: 15/69/0096</p>
       <p className="text-2xl">
-        you've completed{" "}
+        you&apos;ve completed{" "}
         <span className="capitalize font-semibold">{gameName}</span> for this
         week
       </p>

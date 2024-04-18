@@ -66,7 +66,7 @@ const StudentStatModal: React.FunctionComponent<IStudentStatModalProps> = ({
     if (findStudent) {
       setStudentData(findStudent);
     }
-  }, [studentId]);
+  }, [studentId, studentDataCollect]);
 
   return (
     <div

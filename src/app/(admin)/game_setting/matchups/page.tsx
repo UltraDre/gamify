@@ -71,7 +71,7 @@ const MatchUpsSetup: React.FunctionComponent<IMatchUpsSetupProps> = (props) => {
     }, 2000);
 
     return () => clearTimeout(timeOut);
-  }, [conditionMeet]);
+  }, [conditionMeet, router]);
 
   return conditionMeet ? (
     <div className="bg-light min-w-full min-h-screen py-12 flex items-center justify-center flex-col">

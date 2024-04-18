@@ -228,7 +228,7 @@ const MatchUpsGame: React.FunctionComponent<IMatchUpsGameProps> = ({
     ) {
       setGId((prev) => prev + 1);
     }
-  }, [selectedAnswers[currentQuestionIndex]]);
+  }, [selectedAnswers, currentQuestionIndex]);
 
   // Increase selected answers to avoid errors
   React.useEffect(() => {
@@ -238,7 +238,7 @@ const MatchUpsGame: React.FunctionComponent<IMatchUpsGameProps> = ({
         { id: 0, codeSnippet: [], expectedOutput: [] },
       ]);
     }
-  }, [currentQuestionIndex]);
+  }, [currentQuestionIndex, selectedAnswers.length]);
 
   return (
     <>

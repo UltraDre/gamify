@@ -51,7 +51,7 @@ const LeaderBoard: React.FunctionComponent<ILeaderBoardProps> = ({
         setSoloPos(findStudent);
       }
     }
-  }, [soloStudent]);
+  }, [soloStudent, sortedStudentArr]);
 
   return (
     <div className="w-[60%] rounded-lg bg-white px-10 py-14">
